@@ -1,26 +1,61 @@
-# Enterprise AWS Landing Zone & Compliance Automation Platform
+# AWS Landing Zone & Compliance Automation
 
-A production-ready infrastructure blueprint and governance platform designed to enforce cloud architecture best practices, automated compliance, and rigorous CI/CD safety controls within an enterprise environment.
+A Terraform-based AWS infrastructure project that demonstrates an enterprise-style landing zone with reusable networking modules, automated compliance checks, and CI/CD validation.
 
-This repository applies the theoretical frameworks validated by my **AWS Solutions Architect Associate (SAA-C03)** certification to programmatic Infrastructure as Code (IaC) and systems automation.
+The project focuses on Infrastructure as Code (IaC), AWS networking, governance, and automation using Terraform, Python, GitHub Actions, and Boto3.
 
-## Architecture Overview
+## Features
 
-- **Core Networking:** Multi-subnet, highly available Virtual Private Cloud (VPC) baseline designed across strict public and private isolation boundaries inside the Cape Town (`af-south-1`) region.
-- **Automation & Compliance:** Programmatic resource tracking using Python (`boto3`) to enforce corporate metadata tagging policies (`environment`, `owner`, `project`).
-- **CI/CD Guardrails:** Automated GitHub Actions pipeline executing rigorous format linting and code validation checks to prevent syntax anomalies before production promotion.
+- **Reusable VPC Module** – Multi-subnet VPC architecture for the `af-south-1` (Cape Town) region.
+- **Infrastructure as Code** – Modular Terraform configuration for consistent deployments.
+- **Compliance Automation** – Python (`boto3`) script that audits AWS resource tags (`environment`, `owner`, `project`).
+- **CI/CD Validation** – GitHub Actions workflow that runs Terraform formatting and validation before changes are merged.
 
-## Repository Structure
+## Project Structure
 
 ```text
 aws-enterprise-platform/
-├── .github/workflows/
-│   └── iac-pipeline.yml   # Automated linting and validation pipeline
+├── .github/
+│   └── workflows/
+│       └── iac-pipeline.yml
 ├── scripts/
-│   └── tag_enforcer.py    # Python compliance audit engine (Boto3)
+│   └── tag_enforcer.py
 └── terraform/
     ├── environments/
-    │   └── dev/           # Dedicated environment consumer configurations
+    │   └── dev/
     └── modules/
-        └── vpc/           # Reusable parameterised networking module
+        └── vpc/
 ```
+
+## Architecture
+
+- Multi-subnet VPC deployed in the **AWS Africa (Cape Town)** (`af-south-1`) region.
+- Separation of public and private subnets.
+- Modular Terraform design for reuse across environments.
+- Python-based compliance auditing using the AWS SDK (`boto3`).
+
+## Security Principles
+
+- **Least Privilege** – Infrastructure is designed to support IAM least-privilege access.
+- **No Hardcoded Secrets** – Credentials are supplied through environment variables or AWS credential providers.
+- **Idempotent Infrastructure** – Terraform modules are designed for repeatable deployments with predictable state management.
+
+## Technologies
+
+- Terraform
+- AWS
+- Python
+- Boto3
+- GitHub Actions
+
+## Future Improvements
+
+- Remote Terraform state using S3 and DynamoDB
+- AWS Config compliance rules
+- CloudTrail and GuardDuty integration
+- Automated security scanning with tfsec or Checkov
+- Multi-environment deployment (dev, staging, production)
+
+## License
+
+This project is licensed under the MIT License.
