@@ -18,7 +18,7 @@ I kept the scope intentionally small. The goal was to get the fundamentals right
 
 ## Architecture
 
-![Architecture Diagram](docs/architecture-diagram.png)
+![Architecture Diagram](docs/screenshots/architecture-diagram.png)
 
 The setup is a single VPC (`10.0.0.0/16`) split into:
 
