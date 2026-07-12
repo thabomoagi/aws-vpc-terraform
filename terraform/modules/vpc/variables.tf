@@ -17,3 +17,8 @@ variable "environment" {
   type        = string
   description = "Deployment environment (e.g., dev, prod)"
 }
+
+variable "availability_zone" {
+  type        = string
+  description = "The availability zone for the subnets"
+}
